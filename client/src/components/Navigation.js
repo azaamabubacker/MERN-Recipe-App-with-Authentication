@@ -23,10 +23,10 @@ function Navigation() {
             <Link to="/">Home</Link>
           </li>
           <li>
-            <Link to="/auth">Create Recipe</Link>
+            <Link to="/create-recipe">Create Recipe</Link>
           </li>
           <li>
-            <Link to="/create-recipe">Saved Recipes</Link>
+            <Link to="/saved-recipe">Saved Recipes</Link>
           </li>
           <div>
             <li className={classes.login}>

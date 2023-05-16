@@ -1,0 +1,28 @@
+input[type="text"] {
+  width: 300px;
+  height: 40px;
+  border-radius: 5px;
+  outline: 0;
+  margin-right: 1rem;
+  -moz-outline-style: none;
+  display: block;
+}
+
+.create-recipe {
+  background-color: #eeeeee;
+  width: 600px;
+  border-radius: 10px;
+  margin: 5rem auto;
+  padding: 1rem;
+}
+
+label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 10px;
+}
+
+button {
+  margin-left: 5rem;
+  margin-bottom: 1rem;
+}

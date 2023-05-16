@@ -15,8 +15,8 @@ function App() {
         <Navigation />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="create-recipe" element={<CreateRecipe />} />
-          <Route path="saved-recipes" element={<SavedRecipes />} />
+          <Route path="/create-recipe" element={<CreateRecipe />} />
+          <Route path="/saved-recipes" element={<SavedRecipes />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
         </Routes>
