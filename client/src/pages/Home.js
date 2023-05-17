@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import classes from "../pages/Home.module.css";
+import Card from "../components/UI/Card";
 
 function Home() {
   const [recipe, setRecipe] = useState([]);
@@ -14,29 +15,26 @@ function Home() {
     fetchRecipes();
   }, []);
 
-  return (
-    <div>
-      <h1>Available Recipes</h1>
-      <div className={classes["recipe-container"]}>
-        <ul>
-          {recipe.map((recipeItem) => (
-            <div>
-              <li key={recipeItem.id}></li>
-              <h2>{recipeItem.name}</h2>
-              <ul className={classes.ingredient}>
-                <h3>Ingredients</h3>
-                {recipeItem.ingredients.map((ingredient) => (
-                  <li key={ingredient.id}>{ingredient}</li>
-                ))}
-              </ul>
-              <h3>Instructions</h3>
-              <p className={classes.instructions}>{recipeItem.instructions}</p>
-              <img src={recipeItem.imageUrl} alt="Food Pic" />
-              <p>Cooking Time: {recipeItem.cookingTime} Minutes</p>
-            </div>
+  const recipesList = recipe.map((recipeItems) => (
+    <Card key={recipeItems.id}>
+      <div>
+        <h3>{recipeItems.name}</h3>
+        <div>
+          {recipeItems.ingredients.map((ingredientsList) => (
+            <li className={classes.list}>{ingredientsList}</li>
           ))}
-        </ul>
+        </div>
+        <h3>Instructions</h3>
+        <div>{recipeItems.instructions}</div>
+        <img src={recipeItems.imageUrl} alt="Food Pic" />
+        <p> Cooking Time: {recipeItems.cookingTime} Min</p>
       </div>
+    </Card>
+  ));
+  return (
+    <div className={classes.recipe}>
+      <h1>Available Recipes</h1>
+      <ul>{recipesList}</ul>
     </div>
   );
 }
