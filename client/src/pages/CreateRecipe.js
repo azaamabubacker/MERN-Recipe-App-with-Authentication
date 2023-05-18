@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 
 function CreateRecipe() {
   const [name, setName] = useState("");
-  const [ingredients, setIngredients] = useState([]);
+  const [ingredients, setIngredients] = useState([{ value: "" }]);
   const [instructions, setInstructions] = useState("");
   const [imageUrl, setImageUrl] = useState("");
   const [cookingTime, setCookingTime] = useState("");
@@ -19,8 +19,23 @@ function CreateRecipe() {
     setName(event.target.value);
   };
 
-  const ingredientsHandler = (event) => {
-    setIngredients(event.target.value);
+  // Adding ingrednets inputs dynmaically
+  const ingredientsHandler = (event, index) => {
+    const values = [...ingredients];
+    values[index].value = event.target.value;
+    setIngredients(values);
+  };
+
+  const addIngredients = (index) => {
+    const values = [...ingredients];
+    values.push({ value: "" });
+    setIngredients(values);
+  };
+
+  const removeIngredients = (index) => {
+    const values = [...ingredients];
+    values.splice(index, 1);
+    setIngredients(values);
   };
 
   const instructionsHandler = (event) => {
@@ -57,7 +72,7 @@ function CreateRecipe() {
 
     setName("");
     setIngredients("");
-    setInstructions("");
+    setInstructions([{ value: "" }]);
     setImageUrl("");
     setCookingTime("");
   };
@@ -90,15 +105,22 @@ function CreateRecipe() {
           </div>
           <div>
             <label htmlFor="ingredients">Ingredients :</label>
-            <button type="button">Add</button>
-            <button type="button">Remove</button>
-            <input
-              id="ingredients"
-              type="text"
-              name="ingredients"
-              onChange={ingredientsHandler}
-              value={ingredients}
-            />
+            <button type="button" onClick={addIngredients}>
+              Add
+            </button>
+            <button type="button" onClick={removeIngredients}>
+              Remove
+            </button>
+            {ingredients.map((ingredient, index) => (
+              <div key={index}>
+                <input
+                  type="text"
+                  name="Ingredients"
+                  value={ingredient.value}
+                  onChange={(event) => ingredientsHandler(event, index)}
+                />
+              </div>
+            ))}
           </div>
           <div>
             <label htmlFor="instructions">Instructions :</label>
