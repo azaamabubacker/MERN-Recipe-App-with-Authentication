@@ -26,7 +26,7 @@ function Navigation() {
             <Link to="/create-recipe">Create Recipe</Link>
           </li>
           <li>
-            <Link to="/saved-recipe">Saved Recipes</Link>
+            <Link to="/saved-recipes">Saved Recipes</Link>
           </li>
           <div>
             <li className={classes.login}>

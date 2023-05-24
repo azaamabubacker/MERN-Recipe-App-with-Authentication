@@ -15,13 +15,15 @@ function Home() {
     fetchRecipes();
   }, []);
 
-  const recipesList = recipe.map((recipeItems) => (
-    <Card key={recipeItems.id}>
+  const recipesList = recipe.map((recipeItems, index) => (
+    <Card key={index}>
       <div>
         <h3>{recipeItems.name}</h3>
         <div>
-          {recipeItems.ingredients.map((ingredientsList) => (
-            <li className={classes.list}>{ingredientsList}</li>
+          {recipeItems.ingredients.map((ingredientsList, index) => (
+            <li key={index} className={classes.list}>
+              {ingredientsList}
+            </li>
           ))}
         </div>
         <h3>Instructions</h3>
