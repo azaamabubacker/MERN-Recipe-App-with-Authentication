@@ -46,6 +46,7 @@ router.get("/:id", async (req, res) => {
   }
 });
 
+// Define POST Route
 router.post("/", async (req, res) => {
   const recipe = new RecipeModel({
     name: req.body.name,
@@ -82,3 +83,17 @@ router.put("/:id", async (req, res) => {
   }
 });
 export { router as recipesRouter };
+
+// Define DELETE Route.
+router.delete("/:id", async (req, res) => {
+  try {
+    const recipe = await RecipeModel.findByIdAndDelete(req.params.id);
+    if (!recipe) {
+      return res.status(404).json({ error: "Recipe not found" });
+    }
+    res.json({ message: "Recipe deleted successfully" });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ message: "Internal Server Error" });
+  }
+});
