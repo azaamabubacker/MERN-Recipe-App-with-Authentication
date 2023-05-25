@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import classes from "../pages/Home.module.css";
 import Card from "../components/UI/Card";
+import { useGetUserId } from "../components/hooks/useGetUserId";
+import { useNavigate } from "react-router-dom";
 
 function Home() {
   const [recipe, setRecipe] = useState([]);
@@ -14,6 +16,15 @@ function Home() {
   useEffect(() => {
     fetchRecipes();
   }, []);
+
+  const userId = useGetUserId();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!userId) {
+      navigate("/login");
+    }
+  }, [userId, navigate]);
 
   const recipesList = recipe.map((recipeItems, index) => (
     <Card key={index}>

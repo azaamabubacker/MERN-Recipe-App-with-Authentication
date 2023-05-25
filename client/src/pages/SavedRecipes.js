@@ -8,19 +8,35 @@ import classes from "../pages/Home.module.css";
 function SavedRecipes() {
   const [savedRecipes, setSavedRecipes] = useState([]);
   const user = useGetUserId();
+  const navigate = useNavigate();
 
   useEffect(() => {
-    axios
-      .get(`http://localhost:3001/recipes/savedRecipes/${user}`)
-      .then((response) => {
-        setSavedRecipes(response.data.recipes);
-      });
-  }, [user]);
-
-  const navigate = useNavigate();
+    const isLoggedIn = user !== null;
+    if (!isLoggedIn) {
+      navigate("/login");
+    } else {
+      axios
+        .get(`http://localhost:3001/recipes/savedRecipes/${user}`)
+        .then((response) => {
+          setSavedRecipes(response.data.recipes);
+        });
+    }
+  }, [user, navigate]);
 
   const editHandler = (recipeId) => {
     navigate(`edit-recipe/${recipeId}`);
+  };
+
+  const deleteHandler = (recipeId) => {
+    axios
+      .delete(`http://localhost:3001/recipes/${recipeId}`)
+      .then((response) => {
+        console.log({ response: "Recipe deleted successfully" });
+      })
+      .catch((error) => {
+        console.log("Failed to delete recipe:", error);
+      });
+    window.location.reload();
   };
 
   const savedRecipesList = savedRecipes.map((recipeItems, index) => (
@@ -46,7 +62,14 @@ function SavedRecipes() {
         >
           Edit
         </button>
-        <button type="button">Delete</button>
+        <button
+          type="button"
+          onClick={() => {
+            deleteHandler(recipeItems._id);
+          }}
+        >
+          Delete
+        </button>
       </div>
     </Card>
   ));

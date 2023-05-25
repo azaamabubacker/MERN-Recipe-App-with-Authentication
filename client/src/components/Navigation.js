@@ -13,6 +13,7 @@ function Navigation() {
   };
 
   const isLoggedIn = cookies.access_token;
+  const isUndfined = cookies.access_token === "undefined";
 
   return (
     <div className={classes.navigation}>
@@ -30,7 +31,7 @@ function Navigation() {
           </li>
           <div>
             <li className={classes.login}>
-              {!cookies.access_token ? (
+              {!cookies.access_token || isUndfined ? (
                 <Link to="/login">Login</Link>
               ) : (
                 <Link to="/" onClick={logout}>

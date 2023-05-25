@@ -44,6 +44,7 @@ function Login() {
       setCookies("access_token", result.data.token);
 
       // Save the token in local storage
+
       window.localStorage.setItem("jwtToken", result.data.token);
 
       // Navigate to the home page
@@ -54,32 +55,34 @@ function Login() {
   };
 
   return (
-    <div className={classes["form-container"]}>
-      <h1>Login Here</h1>
-      <form onSubmit={loginHandler}>
-        <div>
-          <label htmlFor="username">Username</label>
-          <input
-            type="text"
-            id="username"
-            name="username"
-            onChange={usernameHandler}
-            value={enteredUsername}
-          />
-        </div>
-        <div>
-          <label htmlFor="password">Password</label>
-          <input
-            type="password"
-            id="password"
-            name="password"
-            onChange={passwordHandler}
-            value={enteredPassword}
-          />
-        </div>
-        <button>Login</button>
-      </form>
-    </div>
+    <main>
+      <div className={classes["form-container"]}>
+        <h1>Login Here</h1>
+        <form onSubmit={loginHandler}>
+          <div>
+            <label htmlFor="username">Username</label>
+            <input
+              type="text"
+              id="username"
+              name="username"
+              onChange={usernameHandler}
+              value={enteredUsername}
+            />
+          </div>
+          <div>
+            <label htmlFor="password">Password</label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              onChange={passwordHandler}
+              value={enteredPassword}
+            />
+          </div>
+          <button>Login</button>
+        </form>
+      </div>
+    </main>
   );
 }
 
