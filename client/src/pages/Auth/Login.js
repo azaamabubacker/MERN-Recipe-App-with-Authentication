@@ -35,20 +35,26 @@ function Login() {
         loginData
       );
 
-      // Set the Authorization header
-      axios.defaults.headers.common[
-        "Authorization"
-      ] = `Bearer ${result.data.token}`;
+      if (result.data.token) {
+        // Succesfull Token
+        // Set the Authorization header
+        axios.defaults.headers.common[
+          "Authorization"
+        ] = `Bearer ${result.data.token}`;
 
-      // Set the cookie
-      setCookies("access_token", result.data.token);
+        // Set the cookie
+        setCookies("access_token", result.data.token);
+        console.log(cookies);
 
-      // Save the token in local storage
+        // Save the token in local storage
 
-      window.localStorage.setItem("jwtToken", result.data.token);
+        window.localStorage.setItem("jwtToken", result.data.token);
 
-      // Navigate to the home page
-      navigate("/");
+        // Navigate to the home page
+        navigate("/");
+      } else {
+        console.error(result.data.message);
+      }
     } catch (error) {
       console.error(error);
     }
