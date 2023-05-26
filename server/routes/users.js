@@ -46,9 +46,21 @@ router.post("/login", async (req, res) => {
 
   const token = jwt.sign({ id: user._id }, "secretKey");
 
-  res.json({ token, userId: user._id });
+  try {
+    // Verify the token
+    jwt.verify(token, "secretKey", (err, decoded) => {
+      if (err) {
+        return res.json({ message: "Invalid token" });
+      }
 
-  console.log("userId:", user._id);
+      res.json({ token, userId: user._id });
+
+      console.log("userId:", user._id);
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Internal server error" });
+  }
 });
 
 export { router as userRouter };
