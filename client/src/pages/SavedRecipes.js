@@ -41,7 +41,7 @@ function SavedRecipes() {
 
   const savedRecipesList = savedRecipes.map((recipeItems, index) => (
     <Card key={index}>
-      <div>
+      <div className={classes.btn}>
         <h3>{recipeItems.name}</h3>
         <div>
           {recipeItems.ingredients.map((ingredientsList, index) => (
@@ -63,6 +63,7 @@ function SavedRecipes() {
           Edit
         </button>
         <button
+          className={classes.remove}
           type="button"
           onClick={() => {
             deleteHandler(recipeItems._id);

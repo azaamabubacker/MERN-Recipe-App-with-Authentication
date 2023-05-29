@@ -19,8 +19,6 @@
   */
 html,
 body {
-  background-color: #00adb5;
-
   height: 100%;
   font-family: "Poppins", sans-serif;
 }
@@ -33,6 +31,7 @@ body {
 
 body {
   line-height: 1.5;
+  background-color: #393e46;
   -webkit-font-smoothing: antialiased;
 }
 

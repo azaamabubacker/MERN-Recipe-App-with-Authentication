@@ -131,12 +131,16 @@ function CreateRecipe() {
             value={name}
           />
         </div>
-        <div>
+        <div className={classes["btn-container"]}>
           <label htmlFor="ingredients">Ingredients :</label>
           <button type="button" onClick={addIngredients}>
             Add
           </button>
-          <button type="button" onClick={removeIngredients}>
+          <button
+            className={classes.remove}
+            type="button"
+            onClick={removeIngredients}
+          >
             Remove
           </button>
           {ingredients.map((ingredient, index) => (
