@@ -10,10 +10,30 @@ const router = express.Router();
 router.post("/register", async (req, res) => {
   const { username, password } = req.body;
 
+  // Regex patterns
+  // Alphanumeric and underscore, 3 to 20 characters
+  const usernameRegex = /^[a-zA-Z0-9_]{3,10}$/;
+  // At least 8 characters, contains uppercase, lowercase, and numbers
+  const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/;
+
+  if (!usernameRegex.test(username)) {
+    return res.json({
+      message:
+        "Invalid username. It must be alphanumeric and contain 3 to 10 characters.",
+    });
+  }
+
+  if (!passwordRegex.test(password)) {
+    return res.json({
+      message:
+        "Invalid password. It must be at least 8 characters and contain uppercase, lowercase and numpers.",
+    });
+  }
+
   const user = await UserModel.findOne({ username: username });
 
   if (user) {
-    return res.json({ message: "User Already Exists!" });
+    return res.status(409).json({ message: "User Already Exists!" });
   }
 
   const hashedPassword = await bcrypt.hash(password, 10);
