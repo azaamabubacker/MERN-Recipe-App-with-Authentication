@@ -58,7 +58,7 @@ function Register() {
 
     try {
       const response = await axios.post(
-        `${backendUrl}/auth/register}`,
+        `${backendUrl}/auth/register`,
         userData
       );
       if (response.status === 409) {

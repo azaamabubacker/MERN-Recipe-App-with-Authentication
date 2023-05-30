@@ -15,10 +15,12 @@ function CreateRecipe() {
   const userId = useGetUserId();
   const navigate = useNavigate();
 
+  const backendUrl = "https://mern-recipe-app-jcb7.onrender.com";
+
   useEffect(() => {
     if (id) {
       axios
-        .get(`http://localhost:3001/recipes/${id}`)
+        .get(`${backendUrl}/recipes/${id}`)
         .then((response) => {
           const recipe = response.data;
           setName(recipe.name);
@@ -67,8 +69,6 @@ function CreateRecipe() {
   const cookingTimeHandler = (event) => {
     setCookingTime(event.target.value);
   };
-
-  const backendUrl = "https://mern-recipe-app-jcb7.onrender.com";
 
   const handleSubmit = (event) => {
     event.preventDefault();
