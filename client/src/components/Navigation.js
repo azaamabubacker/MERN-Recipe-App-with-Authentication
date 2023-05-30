@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useCookies } from "react-cookie";
+import { BiHomeAlt2, BiEdit, BiSave } from "react-icons/bi";
 
 import classes from "../components/Navigation.module.css";
 
@@ -17,18 +18,34 @@ function Navigation() {
 
   return (
     <div className={classes.navigation}>
-      <h1>CookPad.</h1>
+      <h1 className={classes.logo}>CookPad.</h1>
+      <h1 className={classes["hide_logo"]}>CP.</h1>
+      <Link to="/">
+        <BiHomeAlt2 className={classes.icon} />
+      </Link>
+      <Link to="/create-recipe">
+        {" "}
+        <BiEdit className={classes.icon} />
+      </Link>
+      <Link to="/saved-recipes">
+        {" "}
+        <BiSave className={classes.icon} />
+      </Link>
+
       <nav>
         <ul>
-          <li>
+          <li className={classes.hide}>
             <Link to="/">Home</Link>
           </li>
-          <li>
+
+          <li className={classes.hide}>
             <Link to="/create-recipe">Create Recipe</Link>
           </li>
-          <li>
+
+          <li className={classes.hide}>
             <Link to="/saved-recipes">Saved Recipes</Link>
           </li>
+
           <div>
             <li className={classes.login}>
               {!cookies.access_token || isUndfined ? (

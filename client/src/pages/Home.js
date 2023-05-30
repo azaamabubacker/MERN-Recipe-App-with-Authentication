@@ -38,7 +38,9 @@ function Home() {
           ))}
         </div>
         <h3>Instructions</h3>
-        <div>{recipeItems.instructions}</div>
+        <div className={classes["recipe_instructions"]}>
+          {recipeItems.instructions}
+        </div>
         <img src={recipeItems.imageUrl} alt="Food Pic" />
         <p> Cooking Time: {recipeItems.cookingTime} Min</p>
       </div>

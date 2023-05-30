@@ -6,3 +6,27 @@
   margin: 1rem;
   width: 700px;
 }
+
+@media (max-width: 770px) {
+  .card {
+    width: 550px;
+  }
+}
+
+@media (max-width: 660px) {
+  .card {
+    width: 450px;
+  }
+}
+
+@media (max-width: 520px) {
+  .card {
+    width: 400px;
+  }
+}
+
+@media (max-width: 450px) {
+  .card {
+    width: 350px;
+  }
+}

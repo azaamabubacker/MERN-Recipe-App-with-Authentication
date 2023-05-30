@@ -71,3 +71,75 @@ main {
   background-color: #393e46;
   border: 1px solid #393e46;
 }
+
+@media (max-width: 530px) {
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  .form-container {
+    position: absolute;
+    top: 10rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #bbb;
+    width: 350px;
+    border-radius: 10px;
+    background-color: rgba(187, 187, 187, 0.9);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+  }
+
+  .form-container button {
+    border-radius: 20px;
+    border: 1px solid #222831;
+    background-color: #222831;
+    color: #ffffff;
+    padding: 8px 30px;
+    letter-spacing: 1px;
+    transition: transform 80ms ease-in;
+    cursor: pointer;
+    margin-top: 1rem;
+    text-align: center;
+    width: 250px;
+  }
+
+  .form-container label {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+  }
+
+  .form-container input[type="text"],
+  .form-container input[type="password"] {
+    height: 40px;
+    border-radius: 5px;
+    outline: 0;
+    border: 1px solid #bbb;
+    padding: 0 10px;
+    font-size: 14px;
+    margin-bottom: 10px;
+    width: 250px;
+  }
+
+  .form-container form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  .form-container div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .form-container button:hover {
+    background-color: #393e46;
+    border: 1px solid #393e46;
+  }
+}

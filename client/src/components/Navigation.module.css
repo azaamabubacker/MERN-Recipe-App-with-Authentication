@@ -69,3 +69,48 @@ a:hover {
   background: none;
   color: #393e46;
 }
+
+.icon {
+  display: none;
+}
+
+.navigation .hide_logo {
+  display: none;
+}
+
+@media (max-width: 850px) {
+  .hide {
+    display: none;
+  }
+
+  .icon {
+    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 2rem;
+    color: #00adb5;
+  }
+}
+
+@media (max-width: 650px) {
+  .navigation .logo {
+    display: none;
+  }
+
+  .navigation .hide_logo {
+    display: block;
+  }
+}
+
+@media (max-width: 530px) {
+  .navigation .hide_logo {
+    display: none;
+  }
+}
+
+@media (max-width: 400px) {
+  .navigation .auth {
+    display: none;
+  }
+}

@@ -48,3 +48,81 @@
 .remove {
   margin-left: 2rem;
 }
+
+@media (max-width: 700px) {
+  .create-recipe {
+    width: 500px;
+  }
+}
+
+@media (max-width: 600px) {
+  .create-recipe {
+    width: 450px;
+  }
+}
+
+@media (max-width: 550px) {
+  .create-recipe {
+    width: 450px;
+  }
+
+  .create-recipe button {
+    padding: 7px 1rem;
+
+    font-size: 0.9rem;
+  }
+
+  .create-recipe input[type="text"] {
+    width: 250px;
+  }
+
+  .create-recipe label {
+    font-size: 0.9rem;
+  }
+
+  .remove {
+    margin-left: 1rem;
+  }
+
+  h1 {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 500px) {
+  .create-recipe {
+    width: 400px;
+  }
+
+  .create-recipe button {
+    padding: 7px 1rem;
+
+    font-size: 0.8rem;
+  }
+
+  .create-recipe input[type="text"] {
+    width: 250px;
+  }
+
+  .create-recipe label {
+    font-size: 0.9rem;
+  }
+
+  .remove {
+    margin-left: 1rem;
+  }
+
+  h1 {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 450px) {
+  .create-recipe {
+    width: 350px;
+  }
+
+  h1 {
+    font-size: 1.2rem;
+  }
+}
