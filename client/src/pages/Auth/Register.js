@@ -23,6 +23,8 @@ function Register() {
     setEnteredPassword(event.target.value);
   };
 
+  const backendUrl = "https://mern-recipe-app-jcb7.onrender.com";
+
   const registerHandler = async (event) => {
     event.preventDefault();
 
@@ -56,7 +58,7 @@ function Register() {
 
     try {
       const response = await axios.post(
-        "http://localhost:3001/auth/register",
+        `${backendUrl}/auth/register}`,
         userData
       );
       if (response.status === 409) {

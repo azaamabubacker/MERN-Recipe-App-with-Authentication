@@ -8,8 +8,10 @@ import { useNavigate } from "react-router-dom";
 function Home() {
   const [recipe, setRecipe] = useState([]);
 
+  const backendUrl = "https://mern-recipe-app-jcb7.onrender.com";
+
   const fetchRecipes = async () => {
-    const response = await axios.get("http://localhost:3001/recipes");
+    const response = await axios.get(`${backendUrl}/recipes`);
     setRecipe(response.data);
   };
 

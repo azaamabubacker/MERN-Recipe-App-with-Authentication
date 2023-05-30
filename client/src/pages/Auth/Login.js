@@ -21,6 +21,8 @@ function Login() {
     setEnteredPassword(event.target.value);
   };
 
+  const backendUrl = "https://mern-recipe-app-jcb7.onrender.com";
+
   const loginHandler = async (event) => {
     event.preventDefault();
 
@@ -30,10 +32,7 @@ function Login() {
     };
 
     try {
-      const result = await axios.post(
-        "http://localhost:3001/auth/login",
-        loginData
-      );
+      const result = await axios.post(`${backendUrl}/auth/login`, loginData);
 
       if (result.data.token) {
         // Succesfull Token

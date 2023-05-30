@@ -68,6 +68,8 @@ function CreateRecipe() {
     setCookingTime(event.target.value);
   };
 
+  const backendUrl = "https://mern-recipe-app-jcb7.onrender.com";
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const recipesData = {
@@ -82,7 +84,7 @@ function CreateRecipe() {
     if (id) {
       // Updating an existing recipe
       axios
-        .put(`http://localhost:3001/recipes/${id}`, recipesData)
+        .put(`${backendUrl}/recipes/${id}`, recipesData)
         .then((response) => {
           console.log(response);
           navigate("/saved-recipes");
@@ -93,7 +95,7 @@ function CreateRecipe() {
     } else {
       // Creating a new recipe
       axios
-        .post("http://localhost:3001/recipes", recipesData)
+        .post(`${backendUrl}/recipes`, recipesData)
         .then((response) => {
           console.log(response);
           navigate("/");

@@ -10,13 +10,15 @@ function SavedRecipes() {
   const user = useGetUserId();
   const navigate = useNavigate();
 
+  const backendUrl = "https://mern-recipe-app-jcb7.onrender.com";
+
   useEffect(() => {
     const isLoggedIn = user !== null;
     if (!isLoggedIn) {
       navigate("/login");
     } else {
       axios
-        .get(`http://localhost:3001/recipes/savedRecipes/${user}`)
+        .get(`${backendUrl}/recipes/savedRecipes/${user}`)
         .then((response) => {
           setSavedRecipes(response.data.recipes);
         });
@@ -29,7 +31,7 @@ function SavedRecipes() {
 
   const deleteHandler = (recipeId) => {
     axios
-      .delete(`http://localhost:3001/recipes/${recipeId}`)
+      .delete(`${backendUrl}/recipes/${recipeId}`)
       .then((response) => {
         console.log({ response: "Recipe deleted successfully" });
       })
